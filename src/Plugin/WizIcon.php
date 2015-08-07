@@ -14,14 +14,15 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
  *         {
  *             parent::__construct(
  *                 'my_ext',
- *                 'myplugin',
+ *                 ['myplugin', 'myotherplugin],
  *                 'ext_icon.png' // Optional
  *                 'locallang.xlf' // Optional
  *             );
  *         }
  *     }
  *
- * Your configured language file needs to contain the following entries:
+ * Your configured language file needs to contain the following entries for each
+ * plugin:
  *
  *     - my_ext.plugin.myplugin.title
  *     - my_ext.plugin.myplugin.description
@@ -38,9 +39,9 @@ abstract class WizIcon
     /**
      * The plugin name.
      *
-     * @var string
+     * @var array
      */
-    private $plugin;
+    private $plugins;
 
     /**
      * Icon file name.
@@ -66,20 +67,20 @@ abstract class WizIcon
     /**
      * Constructor.
      *
-     * @param  string $extension Extension key
-     * @param  string $plugin    Plugin name
-     * @param  string $iconFile  Icon file name. Defaults to ext_icon.png
-     * @param  string $langFile  Lang file name. Defaults to locallang.xlf
+     * @param  string        $extension Extension key
+     * @param  string|array  $plugins   Plugin name(s)
+     * @param  string        $iconFile  Icon file name. Defaults to ext_icon.png
+     * @param  string        $langFile  Lang file name. Defaults to locallang.xlf
      * @return void
      */
     public function __construct(
         $extension,
-        $plugin,
+        $plugins,
         $iconFile = 'ext_icon.png',
         $langFile = 'locallang.xlf'
     ) {
         $this->extension = $extension;
-        $this->plugin = $plugin;
+        $this->plugins = is_array($plugins) ? $plugins : [$plugins];
         $this->iconFile = $iconFile;
         $this->langFile = $langFile;
         $this->ll = null;
@@ -93,12 +94,14 @@ abstract class WizIcon
      */
     public function proc($wizardItems)
     {
-        $wizardItems[$this->getWizardKey()] = [
-            'icon' => $this->getExtRelPath() . $this->iconFile,
-            'title' => $this->translate('title'),
-            'description' => $this->translate('description'),
-            'params' => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=' . $this->getListType()
-        ];
+        foreach ($this->plugins as $plugin) {
+            $wizardItems[$this->getWizardKey($plugin)] = [
+                'icon' => $this->getExtRelPath() . $this->iconFile,
+                'title' => $this->translate('title', $plugin),
+                'description' => $this->translate('description', $plugin),
+                'params' => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=' . $this->getListType($plugin)
+            ];
+        }
 
         return $wizardItems;
     }
@@ -106,17 +109,18 @@ abstract class WizIcon
     /**
      * Retrieve the given label from the language file.
      *
-     * Labels shoudl be named liked:
+     * Labels should be named liked:
      *
      * {extension}.plugin.{plugin}.{label}
      *
-     * @param  string $key Label key
-     * @return string      Translate value
+     * @param  string $key    Label key
+     * @param  string $plugin Plugin name
+     * @return string         Translate value
      */
-    private function translate($key)
+    private function translate($key, $plugin)
     {
         return $GLOBALS['LANG']->getLLL(
-            "{$this->extension}.plugin.{$this->plugin}.{$key}",
+            "{$this->extension}.plugin.{$plugin}.{$key}",
             $this->getLL()
         );
     }
@@ -165,25 +169,27 @@ abstract class WizIcon
     /**
      * Get the wizard items entry key for this icon.
      *
+     * @param  string $plugin Plugin name
      * @return string
      */
-    private function getWizardKey()
+    private function getWizardKey($plugin)
     {
         $ext = $this->getExtNameNoUnderscores();
 
-        return "plugins_tx_{$ext}_{$this->plugin}";
+        return "plugins_tx_{$ext}_{$plugin}";
     }
 
     /**
      * Get the list type for the configured plugin.
      *
+     * @param  string $plugin Plugin name
      * @return string
      */
-    private function getListType()
+    private function getListType($plugin)
     {
         $ext = $this->getExtNameNoUnderscores();
 
-        return "{$ext}_{$this->plugin}";
+        return "{$ext}_{$plugin}";
     }
 
     /**
