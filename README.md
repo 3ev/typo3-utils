@@ -12,7 +12,7 @@ $ composer require "3ev/typo3-utils"
 
 ##Usage
 
-See each of the classes in the `src/` directory what's available and usage
+See each of the classes in the `src/` directory for what's available and usage
 examples.
 
 ##License
