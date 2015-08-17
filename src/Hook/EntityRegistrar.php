@@ -6,7 +6,7 @@ namespace Tev\Typo3Utils\Hook;
  *
  * Usage (in ext_tables.php):
  *
- *      \Tev\Typo3Utils\Hook\EntityRegistrar::register('Path\\To\\Hook\\Class')
+ *      \Tev\Typo3Utils\Hook\EntityRegistrar::register('Path\\To\\Hook\\Class');
  */
 class EntityRegistrar
 {
