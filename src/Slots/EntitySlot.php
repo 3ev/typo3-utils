@@ -3,6 +3,7 @@ namespace Tev\Typo3Utils\Slots;
 
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Extbase\DomainObject\DomainObjectInterface;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
  * Slot for entity change hooks.
@@ -12,9 +13,9 @@ use TYPO3\CMS\Extbase\DomainObject\DomainObjectInterface;
  *
  * The object manager is available at $this->om if you need it.
  *
- * Use this $entity->_isDirty('propertyName') method in your hooks to determine
- * whether or not a property has changed, if that affects the running of your
- * hook.
+ * Use the $this->isDirty($entity, 'propertyName') method in your hooks to
+ * determine whether or not a property has changed, if that affects the running
+ * of your hook.
  *
  * Usage:
  *
@@ -58,6 +59,13 @@ abstract class EntitySlot implements SingletonInterface
     private $className;
 
     /**
+     * Dirty attribute cache.
+     *
+     * @var array
+     */
+    private $dirty;
+
+    /**
      * Constructor.
      *
      * @param  string $className Class name of entity to listen to
@@ -66,6 +74,7 @@ abstract class EntitySlot implements SingletonInterface
     public function __construct($className)
     {
         $this->className = $className;
+        $this->dirty = [];
     }
 
     /**
@@ -121,6 +130,45 @@ abstract class EntitySlot implements SingletonInterface
             if (method_exists($this, 'deleted')) {
                 $this->deleted($entity);
             }
+        }
+    }
+
+    /**
+     * Check if the given attribute on the given model is dirty.
+     *
+     * @param  \TYPO3\CMS\Extbase\DomainObject\AbstractEntity $entity Entity
+     * @param  string                                         $attr   Lower camel-cased attribute name
+     * @return boolean
+     */
+    protected function isDirty(AbstractEntity $entity, $attr)
+    {
+        $attr = (string) $attr;
+
+        if ($entity->_isDirty($attr)) {
+            $cls = str_replace('\\', '_', get_class($entity));
+            $uid = (string) $entity->getUid();
+            $val = $entity->{'get' . ucwords($attr)}();
+
+            if (!isset($this->dirty[$cls])) {
+                $this->dirty[$cls] = [];
+            }
+
+            if (!isset($this->dirty[$cls][$uid])) {
+                $this->dirty[$cls][$uid] = [];
+            }
+
+            if (!isset($this->dirty[$cls][$uid][$attr])) {
+                $this->dirty[$cls][$uid][$attr] = null;
+            }
+
+            if ($this->dirty[$cls][$uid][$attr] !== $val) {
+                $this->dirty[$cls][$uid][$attr] = $val;
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
     }
 }
