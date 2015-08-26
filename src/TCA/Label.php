@@ -18,7 +18,7 @@ use TYPO3\CMS\Backend\Utility\BackendUtility;
  *                 'last_name'
  *             ],
  *
- *             // Optional defaults to ' '
+ *             // Optional, defaults to ' '
  *
  *             'glue' => ', '
  *          ]
