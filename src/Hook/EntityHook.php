@@ -209,7 +209,7 @@ abstract class EntityHook
     protected function saving($uid, $dirty) {}
 
     /**
-     * Post-create or update hoook.
+     * Post-create or update hook.
      *
      * @param  int   $uid   Record UID
      * @param  array $dirty Modifed field data of record that was created or updated
