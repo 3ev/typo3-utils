@@ -22,20 +22,18 @@ class Tsfe
             $GLOBALS['TT']->start();
         }
 
-        $tsfe = GeneralUtility::makeInstance(
+        $GLOBALS['TSFE'] = GeneralUtility::makeInstance(
             'TYPO3\\CMS\\Frontend\\Controller\\TypoScriptFrontendController',
             $GLOBALS['TYPO3_CONF_VARS'],
             $rootPageId,
         0);
 
-        $tsfe->initFEuser();
-        $tsfe->determineId();
-        $tsfe->getPageAndRootline();
-        $tsfe->initTemplate();
-        $tsfe->getConfigArray();
-        $tsfe->newCObj();
-
-        $GLOBALS['TSFE'] = $tsfe;
+        $GLOBALS['TSFE']->initFEuser();
+        $GLOBALS['TSFE']->determineId();
+        $GLOBALS['TSFE']->getPageAndRootline();
+        $GLOBALS['TSFE']->initTemplate();
+        $GLOBALS['TSFE']->getConfigArray();
+        $GLOBALS['TSFE']->newCObj();
 
         if ($setHost) {
             $domains = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
