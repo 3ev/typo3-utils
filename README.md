@@ -25,7 +25,7 @@ TYPO3 lifecycle events on database entities.
 Just extend `EntityHook`, and specify the table you want to listen to in the
 parent constructor. You'll then be able to implement `creating`, `created`, `updating`,
 `updated`, `saving`, `saved` and `deleted` methods as you wish, which will be called
-when then relevant action happens from the TYPO3 backend.
+when the relevant action happens from the TYPO3 backend.
 
 You can register your hook class by simply adding:
 
@@ -45,21 +45,34 @@ anywhere on the filesystem.
 
 ####Tev\Typo3Utils\Plugin\WizIcon
 
-This simple class makes it trivial to register wizicons for plugins in your extension.
+This class makes it trivial to register wizicons for plugins in your extension.
 
 Just extend the base wizicon class and configure the icon details in the parent
 constructor:
 
 ```php
+namespace My\Extension;
+
 class MyIcon extends \Tev\Typo3Utils\Plugin\WizIcon
 {
     public function __construct()
     {
         parent::__construct(
-            'my_ext', // Your extension's name, with underscores
-            ['myplugin', 'myotherplugin], // The plugin name(s) you'd like the wizicon to be used for
-             'ext_icon.png' // Optional. The icon file name
-            'locallang.xlf' // Optional. The language file you'd like to use
+            // Your extension's name, with underscores
+
+            'my_ext',
+
+            // The plugin name(s) you'd like the wizicon to be used for
+
+            ['myplugin', 'myotherplugin],
+
+            // Optional. The icon file name
+
+            'ext_icon.png'
+
+            // Optional. The language file you'd like to use
+
+            'locallang.xlf'
         );
     }
 }
@@ -76,13 +89,13 @@ if (TYPO3_MODE === 'BE') {
 
 ####Tev\Typo3Utils\Services\GeocodingService
 
-This service provides an Extbase-compatible wrapper around the [Geocoder PHP](http://geocoder-php.org/Geocoder)
+This class provides an Extbase-compatible wrapper around the [Geocoder PHP](http://geocoder-php.org/Geocoder)
 library.
 
 ####Tev\Typo3Utils\TCA\Label
 
-This simple utility class provides a TCA userfunc to allow you to set labels
-consisting of multiple fields, with a custom separator.
+This utility class provides a TCA userfunc to allow you to set labels consisting
+of multiple fields, with a custom separator.
 
 For example:
 
@@ -127,7 +140,7 @@ backend. You just need to set the root page ID an optionally provide a host name
 
 ```php
 $tsfe = \Tev\Typo3Utils\Utility\Tsfe;
-$tsfe->create(1, /*www.hostname.com*/);
+$tsfe->create(1 /*, www.hostname.com */);
 ```
 
 ##License
