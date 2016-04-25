@@ -14,7 +14,7 @@ $ composer require "3ev/typo3-utils"
 
 ##Usage
 
-TYPO3 Utils provides the following utility classes to help ease builing TYPO3
+TYPO3 Utils provides the following utility classes to help ease building TYPO3
 extensions:
 
 ####Tev\Typo3Utils\Hook\EntityHook & Tev\Typo3Utils\Hook\EntityRegistrar
