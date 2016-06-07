@@ -17,6 +17,14 @@ $ composer require "3ev/typo3-utils"
 TYPO3 Utils provides the following utility classes to help ease building TYPO3
 extensions:
 
+####Tev\Typo3Utils\Generators
+
+This namespace contains 'generators', which are wrappers around TYPO3's
+[DataHandler](https://docs.typo3.org/typo3cms/CoreApiReference/ApiOverview/Typo3CoreEngine/Database/Index.html) API.
+
+Generators can be used to create page, content and template and records from the
+backend or CLI scripts (a `BE_USER` is required).
+
 ####Tev\Typo3Utils\Hook\EntityHook & Tev\Typo3Utils\Hook\EntityRegistrar
 
 The `EntityHook` and `EntityRegistrar` classes make it easy to listen to backend
