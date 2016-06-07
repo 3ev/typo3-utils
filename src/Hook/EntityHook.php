@@ -1,4 +1,5 @@
 <?php
+
 namespace Tev\Typo3Utils\Hook;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -62,22 +63,22 @@ abstract class EntityHook
     /**
      * Object manager.
      *
-     * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+     * @var  \TYPO3\CMS\Extbase\Object\ObjectManager
      */
     protected $om;
 
     /**
      * Name of table to listen to.
      *
-     * @var string
+     * @var  string
      */
     protected $table;
 
     /**
      * Constructor.
      *
-     * @param  string $table Name of table to listen to
-     * @return void
+     * @param  string  $table  Name of table to listen to
+     * @return  void
      */
     public function __construct($table)
     {
@@ -88,12 +89,12 @@ abstract class EntityHook
     /**
      * TYPO3 pre-save hook.
      *
-     * @param  string                                   $status 'new' for new entities, 'update' for existing entities
-     * @param  string                                   $table  Database table name being saved
-     * @param  string|int                               $id     UID or New ID of entity being saved
-     * @param  array                                    $fields Array of fields being updated
-     * @param  \TYPO3\CMS\Core\DataHandling\DataHandler $dh     Class that triggered hook
-     * @return void
+     * @param  string  $status  'new' for new entities, 'update' for existing entities
+     * @param  string  $table  Database table name being saved
+     * @param  string|int  $id  UID or New ID of entity being saved
+     * @param  array  $fields  Array of fields being updated
+     * @param  \TYPO3\CMS\Core\DataHandling\DataHandler  $dh  Class that triggered hook
+     * @return  void
      */
     public function processDatamap_postProcessFieldArray($status, $table, $id, &$fields, $dh)
     {
@@ -123,12 +124,12 @@ abstract class EntityHook
     /**
      * TYPO3 post-save hook.
      *
-     * @param  string                                   $status 'new' for new entities, 'update' for existing entities
-     * @param  string                                   $table  Database table name being saved
-     * @param  string|int                               $id     UID or New ID of entity being saved
-     * @param  array                                    $fields Array of fields being updated
-     * @param  \TYPO3\CMS\Core\DataHandling\DataHandler $dh     Class that triggered hook
-     * @return void
+     * @param  string  $status  'new' for new entities, 'update' for existing entities
+     * @param  string  $table  Database table name being saved
+     * @param  string|int  $id  UID or New ID of entity being saved
+     * @param  array  $fields  Array of fields being updated
+     * @param  \TYPO3\CMS\Core\DataHandling\DataHandler  $dh  Class that triggered hook
+     * @return  void
      */
     public function processDatamap_afterDatabaseOperations($status, $table, $id, $fields, $dh)
     {
@@ -148,12 +149,12 @@ abstract class EntityHook
     /**
      * TYPO3 pre-delete hook.
      *
-     * @param  string                                   $table  Table name
-     * @param  int                                      $id     UID of entity being delete
-     * @param  array                                    $fields Array of record fields
-     * @param  boolean                                  $cancel Whether or not to cancel deletion
-     * @param  \TYPO3\CMS\Core\DataHandling\DataHandler $dh     Class that triggered hook
-     * @return void
+     * @param  string  $table  Table name
+     * @param  int  $id  UID of entity being delete
+     * @param  array  $fields  Array of record fields
+     * @param  boolean  $cancel  Whether or not to cancel deletion
+     * @param  \TYPO3\CMS\Core\DataHandling\DataHandler  $dh  Class that triggered hook
+     * @return  void
      */
     public function processCmdmap_deleteAction($table, $id, $fields, &$cancel, $dh)
     {
@@ -167,72 +168,86 @@ abstract class EntityHook
     /**
      * Pre-create hook.
      *
-     * @param  array      $fields Field data of record being created
-     * @return null|array         Returns modified field data, or null
+     * @param  array  $fields Field data of record being created
+     * @return  null|array  Returns modified field data, or null
      */
-    protected function creating($fields) {}
+    protected function creating($fields)
+    {
+    }
 
     /**
      * Post-create hook.
      *
-     * @param  int   $uid    New record UID
-     * @param  array $fields Field data of record that was created
-     * @return void
+     * @param  int  $uid  New record UID
+     * @param  array  $fields  Field data of record that was created
+     * @return  void
      */
-    protected function created($uid, $fields) {}
+    protected function created($uid, $fields)
+    {
+    }
 
     /**
      * Pre-update hook.
      *
-     * @param  int        $uid   Record UID
-     * @param  array      $dirty Modified field data of record being updated
-     * @return null|array        Returns modified field data, or null
+     * @param  int  $uid  Record UID
+     * @param  array  $dirty  Modified field data of record being updated
+     * @return  null|array  Returns modified field data, or null
      */
-    protected function updating($uid, $dirty) {}
+    protected function updating($uid, $dirty)
+    {
+    }
 
     /**
      * Post-update hook.
      *
-     * @param  int   $uid   Record UID
-     * @param  array $dirty Modified field data of record that was updated
-     * @return void
+     * @param  int  $uid  Record UID
+     * @param  array  $dirty  Modified field data of record that was updated
+     * @return  void
      */
-    protected function updated($uid, $dirty) {}
+    protected function updated($uid, $dirty)
+    {
+    }
 
     /**
      * Pre-create or update hook.
      *
-     * @param  int|null   $uid   Record UID. Will be null if record is new
-     * @param  array      $dirty (Modified) field data or record being created or updated
-     * @return null|array        Returns modified field data, or null
+     * @param  int|null  $uid  Record UID. Will be null if record is new
+     * @param  array  $dirty  (Modified) field data or record being created or updated
+     * @return  null|array  Returns modified field data, or null
      */
-    protected function saving($uid, $dirty) {}
+    protected function saving($uid, $dirty)
+    {
+    }
 
     /**
      * Post-create or update hook.
      *
-     * @param  int   $uid   Record UID
-     * @param  array $dirty Modifed field data of record that was created or updated
-     * @return void
+     * @param  int  $uid  Record UID
+     * @param  array  $dirty  Modifed field data of record that was created or updated
+     * @return  void
      */
-    protected function saved($uid, $dirty) {}
+    protected function saved($uid, $dirty)
+    {
+    }
 
     /**
      * Pre-delete hook.
      *
-     * @param  int          $uid    Record UID
-     * @param  array        $fields Record fields
-     * @return null|boolean         Null, or false to cancel delete or true to continue
+     * @param  int  $uid  Record UID
+     * @param  array  $fields  Record fields
+     * @return  null|boolean  Null, or false to cancel delete or true to continue
      */
-    protected function deleting($uid, $fields) {}
+    protected function deleting($uid, $fields)
+    {
+    }
 
     /**
      * Get the correct entity UID even if a record is new.
      *
-     * @param  string                                   $status
-     * @param  string|int                               $id
-     * @param  \TYPO3\CMS\Core\DataHandling\DataHandler $dh
-     * @return int
+     * @param  string  $status
+     * @param  string|int  $id
+     * @param  \TYPO3\CMS\Core\DataHandling\DataHandler  $dh
+     * @return  int
      */
     private function getUid($status, $id, $dh)
     {

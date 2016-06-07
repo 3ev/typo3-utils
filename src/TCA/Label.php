@@ -1,4 +1,5 @@
 <?php
+
 namespace Tev\Typo3Utils\TCA;
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
@@ -32,9 +33,9 @@ class Label
     /**
      * Run the user function.
      *
-     * @param  array &$params Contains 'table', 'row' and options
-     * @param  null  $pObj    Is null, but documented
-     * @return void
+     * @param  array  &$params  Contains 'table', 'row' and options
+     * @param  null  $pObj  Is null, but documented
+     * @return  void
      */
     public function run(&$params, $pObj)
     {

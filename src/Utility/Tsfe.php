@@ -1,4 +1,5 @@
 <?php
+
 namespace Tev\Typo3Utils\Utility;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -11,9 +12,9 @@ class Tsfe
     /**
      * Create the TSFE.
      *
-     * @param  int     $rootPageId Root page UID to bootstrap TSFE from
-     * @param  boolean $setHost    Optionally set the HTTP_HOST. Useful if on CLI. false by default
-     * @return void
+     * @param  int  $rootPageId  Root page UID to bootstrap TSFE from
+     * @param  boolean  $setHost  Optionally set the HTTP_HOST. Useful if on CLI. false by default
+     * @return  void
      */
     public function create($rootPageId, $setHost = false)
     {
@@ -26,7 +27,8 @@ class Tsfe
             'TYPO3\\CMS\\Frontend\\Controller\\TypoScriptFrontendController',
             $GLOBALS['TYPO3_CONF_VARS'],
             $rootPageId,
-        0);
+            0
+        );
 
         $GLOBALS['TSFE']->initFEuser();
         $GLOBALS['TSFE']->determineId();

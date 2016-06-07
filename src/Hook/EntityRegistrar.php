@@ -1,4 +1,5 @@
 <?php
+
 namespace Tev\Typo3Utils\Hook;
 
 /**
@@ -13,8 +14,8 @@ class EntityRegistrar
     /**
      * Register the given entity hook class.
      *
-     * @param  string $className FQCN
-     * @return void
+     * @param  string  $className  FQCN
+     * @return  void
      */
     public static function register($className)
     {

@@ -1,4 +1,5 @@
 <?php
+
 namespace Tev\Typo3Utils\Utility;
 
 use Exception;
@@ -14,11 +15,10 @@ class Page
      * Uses TSFE and Typolink, so TSFE must be available. If no TSFE is available,
      * this method will attempt to bootstrap it if $forceTsfe is true.
      *
-     * @param  int     $pageUid   Page UID
-     * @param  boolean $forceTsfe Attempt to bootstrap TSFE if unavailable. false by default
-     * @return string
-     *
-     * @throws \Exception If no TSFE and did not bootstrap
+     * @param  int  $pageUid  Page UID
+     * @param  boolean  $forceTsfe  Attempt to bootstrap TSFE if unavailable. false by default
+     * @return  string
+     * @throws  \Exception  If no TSFE and did not bootstrap
      */
     public function getUri($pageUid, $forceTsfe = false)
     {
@@ -41,8 +41,8 @@ class Page
     /**
      * Get the root page UID of the given page.
      *
-     * @param  int $pageUid Page UID to get root page for
-     * @return int          Root page UID
+     * @param  int  $pageUid  Page UID to get root page for
+     * @return  int  Root page UID
      */
     public function getRootPage($pageUid)
     {
@@ -70,8 +70,8 @@ class Page
      * - storage_pid
      * - is_site_root
      *
-     * @param  int         $pageUid Page UID
-     * @return array|false          Page info array, or false if not found
+     * @param  int  $pageUid  Page UID
+     * @return  array|false  Page info array, or false if not found
      */
     public function getPageInfo($pageUid)
     {

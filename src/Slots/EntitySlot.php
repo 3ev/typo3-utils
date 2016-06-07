@@ -1,4 +1,5 @@
 <?php
+
 namespace Tev\Typo3Utils\Slots;
 
 use TYPO3\CMS\Core\SingletonInterface;
@@ -46,7 +47,7 @@ abstract class EntitySlot implements SingletonInterface
     /**
      * Object manager.
      *
-     * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+     * @var  \TYPO3\CMS\Extbase\Object\ObjectManager
      * @inject
      */
     protected $om;
@@ -54,22 +55,22 @@ abstract class EntitySlot implements SingletonInterface
     /**
      * Class name of entity to liste to.
      *
-     * @var string
+     * @var  string
      */
     private $className;
 
     /**
      * Dirty attribute cache.
      *
-     * @var array
+     * @var  array
      */
     private $dirty;
 
     /**
      * Constructor.
      *
-     * @param  string $className Class name of entity to listen to
-     * @return void
+     * @param  string  $className  Class name of entity to listen to
+     * @return  void
      */
     public function __construct($className)
     {
@@ -80,9 +81,9 @@ abstract class EntitySlot implements SingletonInterface
     /**
      * After insert object hook.
      *
-     * @param  \TYPO3\CMS\Extbase\DomainObject\DomainObjectInterface $entity     Entity object
-     * @param  string                                                $signalInfo Signal information
-     * @return void
+     * @param  \TYPO3\CMS\Extbase\DomainObject\DomainObjectInterface  $entity  Entity object
+     * @param  string  $signalInfo  Signal information
+     * @return  void
      */
     public function afterInsertObject(DomainObjectInterface $entity, $signalInfo)
     {
@@ -100,9 +101,9 @@ abstract class EntitySlot implements SingletonInterface
     /**
      * After update object hook.
      *
-     * @param  \TYPO3\CMS\Extbase\DomainObject\DomainObjectInterface $entity     Entity object
-     * @param  string                                                $signalInfo Signal information
-     * @return void
+     * @param  \TYPO3\CMS\Extbase\DomainObject\DomainObjectInterface  $entity  Entity object
+     * @param  string  $signalInfo  Signal information
+     * @return  void
      */
     public function afterUpdateObject(DomainObjectInterface $entity, $signalInfo)
     {
@@ -120,9 +121,9 @@ abstract class EntitySlot implements SingletonInterface
     /**
      * After remove object hook.
      *
-     * @param  \TYPO3\CMS\Extbase\DomainObject\DomainObjectInterface $entity     Entity object
-     * @param  string                                                $signalInfo Signal information
-     * @return void
+     * @param  \TYPO3\CMS\Extbase\DomainObject\DomainObjectInterface  $entity  Entity object
+     * @param  string  $signalInfo  Signal information
+     * @return  void
      */
     public function afterRemoveObject(DomainObjectInterface $entity, $signalInfo)
     {
@@ -136,9 +137,9 @@ abstract class EntitySlot implements SingletonInterface
     /**
      * Check if the given attribute on the given model is dirty.
      *
-     * @param  \TYPO3\CMS\Extbase\DomainObject\AbstractEntity $entity Entity
-     * @param  string                                         $attr   Lower camel-cased attribute name
-     * @return boolean
+     * @param  \TYPO3\CMS\Extbase\DomainObject\AbstractEntity  $entity  Entity
+     * @param  string  $attr  Lower camel-cased attribute name
+     * @return  boolean
      */
     protected function isDirty(AbstractEntity $entity, $attr)
     {

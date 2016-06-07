@@ -1,4 +1,5 @@
 <?php
+
 namespace Tev\Typo3Utils\Utility;
 
 /**
@@ -9,22 +10,22 @@ class ExtConf
     /**
      * The name of the extension being accessed.
      *
-     * @var string
+     * @var  string
      */
     private $extName;
 
     /**
      * The loaded config array.
      *
-     * @var array
+     * @var  array
      */
     private $conf;
 
     /**
      * Constructor.
      *
-     * @param  string $extName The name of the extension being accessed.
-     * @return void
+     * @param  string  $extName  The name of the extension being accessed.
+     * @return  void
      */
     public function __construct($extName)
     {
@@ -37,8 +38,8 @@ class ExtConf
     /**
      * Get a config variable.
      *
-     * @param  string     $key Config key
-     * @return mixed|null      Variable, or null if not set
+     * @param  string  $key  Config key
+     * @return  mixed|null  Variable, or null if not set
      */
     public function get($key)
     {
@@ -52,7 +53,7 @@ class ExtConf
     /**
      * Load ext conf.
      *
-     * @return void
+     * @return  void
      */
     private function loadConfig()
     {

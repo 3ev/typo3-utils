@@ -1,4 +1,5 @@
 <?php
+
 namespace Tev\Typo3Utils\Services;
 
 use Exception;
@@ -15,34 +16,34 @@ class GeocodingService implements SingletonInterface
     /**
      * Underlying geocoding service.
      *
-     * @var \Geocoder\Geocoder
+     * @var  \Geocoder\Geocoder
      */
     protected $geocoder;
 
     /**
      * Logger instance.
      *
-     * @var \TYPO3\CMS\Core\Log\Logger
+     * @var  \TYPO3\CMS\Core\Log\Logger
      */
     protected $logger;
 
     /**
      * Geocoding language (en-GB by default).
      *
-     * @var string
+     * @var  string
      */
     private $lang;
 
     /**
      * Google Maps API key.
      *
-     * @var string
+     * @var  string
      */
     private $apiKey;
 
     /**
-     * @param  \TYPO3\CMS\Core\Log\LogManager $logManager
-     * @return void
+     * @param  \TYPO3\CMS\Core\Log\LogManager  $logManager
+     * @return  void
      */
     public function injectLogManager(LogManager $logManager)
     {
@@ -52,7 +53,7 @@ class GeocodingService implements SingletonInterface
     /**
      * Constructor.
      *
-     * @return void
+     * @return  void
      */
     public function __construct()
     {
@@ -62,10 +63,10 @@ class GeocodingService implements SingletonInterface
     }
 
     /**
-     * Set the ceocoding language.
+     * Set the geocoding language.
      *
-     * @param  string                                    $lang
-     * @return \Tev\Typo3Utils\Services\GeocodingService
+     * @param  string  $lang
+     * @return  \Tev\Typo3Utils\Services\GeocodingService
      */
     public function setLang($lang)
     {
@@ -79,8 +80,8 @@ class GeocodingService implements SingletonInterface
     /**
      * Set the Google Maps API key.
      *
-     * @param  string                                    $apiKey
-     * @return \Tev\Typo3Utils\Services\GeocodingService
+     * @param  string  $apiKey
+     * @return  \Tev\Typo3Utils\Services\GeocodingService
      */
     public function setApiKey($apiKey)
     {
@@ -94,10 +95,9 @@ class GeocodingService implements SingletonInterface
     /**
      * Geocode a raw string to a lat/lng value.
      *
-     * @param  string $details Geocode string
-     * @return array           Hash containing lat and lng. Both will be null if geocoding failed
-     *
-     * @throws \Exception If API key is not set
+     * @param  string  $details  Geocode string
+     * @return  array  Hash containing lat and lng. Both will be null if geocoding failed
+     * @throws  \Exception  If API key is not set
      */
     public function geocode($details)
     {
@@ -126,9 +126,8 @@ class GeocodingService implements SingletonInterface
     /**
      * Create a geocoder object if one doesn't already exist.
      *
-     * @return \Geocoder\Geocoder
-     *
-     * @throws \Exception If API key is not set
+     * @return  \Geocoder\Geocoder
+     * @throws  \Exception  If API key is not set
      */
     protected function createGeocoder()
     {

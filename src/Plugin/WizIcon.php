@@ -1,4 +1,5 @@
 <?php
+
 namespace Tev\Typo3Utils\Plugin;
 
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
@@ -32,46 +33,46 @@ abstract class WizIcon
     /**
      * The extension name.
      *
-     * @var string
+     * @var  string
      */
     private $extension;
 
     /**
      * The plugin name.
      *
-     * @var array
+     * @var  array
      */
     private $plugins;
 
     /**
      * Icon file name.
      *
-     * @var string
+     * @var  string
      */
     private $iconFile;
 
     /**
      * Language file name.
      *
-     * @var string
+     * @var  string
      */
     private $langFile;
 
     /**
      * Language array cache.
      *
-     * @var array
+     * @var  array
      */
     private $ll;
 
     /**
      * Constructor.
      *
-     * @param  string        $extension Extension key
-     * @param  string|array  $plugins   Plugin name(s)
-     * @param  string        $iconFile  Icon file name. Defaults to ext_icon.png
-     * @param  string        $langFile  Lang file name. Defaults to locallang.xlf
-     * @return void
+     * @param  string  $extension  Extension key
+     * @param  string|array  $plugins  Plugin name(s)
+     * @param  string  $iconFile  Icon file name. Defaults to ext_icon.png
+     * @param  string  $langFile  Lang file name. Defaults to locallang.xlf
+     * @return  void
      */
     public function __construct(
         $extension,
@@ -89,8 +90,8 @@ abstract class WizIcon
     /**
      * Add the icon to the wizard items array.
      *
-     * @param  array $wizardItems The current wizard items
-     * @return array
+     * @param  array  $wizardItems  The current wizard items
+     * @return  array
      */
     public function proc($wizardItems)
     {
@@ -113,9 +114,9 @@ abstract class WizIcon
      *
      * {extension}.plugin.{plugin}.{label}
      *
-     * @param  string $key    Label key
-     * @param  string $plugin Plugin name
-     * @return string         Translate value
+     * @param  string  $key  Label key
+     * @param  string  $plugin  Plugin name
+     * @return  string  Translate value
      */
     private function translate($key, $plugin)
     {
@@ -132,7 +133,7 @@ abstract class WizIcon
      *
      * Resources/Private/Language/locallang.xlf
      *
-     * @return array
+     * @return  array
      */
     private function getLL()
     {
@@ -149,7 +150,7 @@ abstract class WizIcon
     /**
      * Get the ext path for this extension.
      *
-     * @return string
+     * @return  string
      */
     private function getExtPath()
     {
@@ -159,7 +160,7 @@ abstract class WizIcon
     /**
      * Get the ext rel path for this extension.
      *
-     * @return string
+     * @return  string
      */
     private function getExtRelPath()
     {
@@ -169,8 +170,8 @@ abstract class WizIcon
     /**
      * Get the wizard items entry key for this icon.
      *
-     * @param  string $plugin Plugin name
-     * @return string
+     * @param  string  $plugin  Plugin name
+     * @return  string
      */
     private function getWizardKey($plugin)
     {
@@ -182,8 +183,8 @@ abstract class WizIcon
     /**
      * Get the list type for the configured plugin.
      *
-     * @param  string $plugin Plugin name
-     * @return string
+     * @param  string  $plugin  Plugin name
+     * @return  string
      */
     private function getListType($plugin)
     {
@@ -195,7 +196,7 @@ abstract class WizIcon
     /**
      * Get the configured extension name without any underscores.
      *
-     * @return string
+     * @return  string
      */
     private function getExtNameNoUnderscores()
     {

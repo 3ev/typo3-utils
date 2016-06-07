@@ -1,4 +1,5 @@
 <?php
+
 namespace Tev\Typo3Utils\Slots;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -15,8 +16,8 @@ class EntityRegistrar
     /**
      * Register the given entity slot class.
      *
-     * @param  string $className FQCN
-     * @return void
+     * @param  string  $className  FQCN
+     * @return  void
      */
     public static function register($className)
     {
