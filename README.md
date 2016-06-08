@@ -17,6 +17,11 @@ $ composer require "3ev/typo3-utils"
 TYPO3 Utils provides the following utility classes to help ease building TYPO3
 extensions:
 
+####Tev\Typo3Utils\Domain\Model
+
+This namespace provides a few useful traits for re-usable model functionality,
+such as adding getters and setters for `crdate`, `tstamp` and `hidden`.
+
 ####Tev\Typo3Utils\Generators
 
 This namespace contains 'generators', which are wrappers around TYPO3's
