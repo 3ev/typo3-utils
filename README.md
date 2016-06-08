@@ -130,6 +130,12 @@ For example:
 ]
 ```
 
+####Tev\Typo3Utils\Utility\Dump
+
+This class provides a few utilities for dumping out data. Currently, the only
+available method allows you to dump a an Extbase query object so that you can
+examine the query being generated and run.
+
 ####Tev\Typo3Utils\Utility\ExtConf
 
 This class provides a simple API for accessing extconf variables:
